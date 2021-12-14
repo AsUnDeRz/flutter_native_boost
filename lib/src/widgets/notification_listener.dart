@@ -104,9 +104,7 @@ class _ContainerNotificationListenerState
   @override
   void initState() {
     super.initState();
-    if (!_notificationChannel.checkMethodCallHandler(_handler)) {
-      _notificationChannel.setMethodCallHandler(_handler);
-    }
+    _notificationChannel.setMethodCallHandler(_handler);
     _streamSubscription = _observerNativeNotification(widget.names, (value) {
       final bridge = ContainerNativeBridge.of(context);
       widget.onNotification(bridge?.topNavigator?.currentContext, value);
